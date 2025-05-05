@@ -15,7 +15,7 @@ public class InMemoryDb implements IDb {
 	}
 	
 	@Override
-	public void updateBirth(IPerson person) throws Exception {  // Using Person model
+	public void updateBirth(IPerson person) throws Exception {
 		if(_db.get(person.get_id()) == null)
 			throw new Exception("User with " + person.get_id() + " does not exist!");
 		

@@ -3,7 +3,7 @@ package models;
 import java.beans.JavaBean;
 
 /**
- * Person model.
+ * Simple model that represents a Person.
  */
 @JavaBean
 public class Person implements IPerson {

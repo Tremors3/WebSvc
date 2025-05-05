@@ -4,6 +4,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 
 import services.IPersonBuilder;
+import services.ISvcBuilder;
 import services.PersonBuilder;
 import web.MyServlet;
 
@@ -21,10 +22,10 @@ public class MyServletTest {
 		// Arrange
 		
 		// Mock svcbuilder
-		ServicesBuilderForMocks svcBuilder = new ServicesBuilderForMocks();
+		ISvcBuilder svcBuilder = new ServicesBuilderForMocks();
 
 		// Person Builder
-		IPersonBuilder personBuilder = new PersonBuilder();
+		IPersonBuilder personBuilder = PersonBuilder.GetInstance();
 
 		// Mock up HttpServletRequest and HttpServletResponse
 		MyHttpServletRequest request = new MyHttpServletRequest();
@@ -51,8 +52,8 @@ public class MyServletTest {
 		
 		// Assert
 		
-		Assert(ex, null);
-		Assert(response.getStatus(), 400);		
+		Assert(null, ex);
+		Assert(400, response.getStatus());
 	}
 	
 	public static void main(String[] args) {

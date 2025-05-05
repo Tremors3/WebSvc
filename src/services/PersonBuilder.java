@@ -3,9 +3,11 @@ package services;
 import models.IPerson;
 import models.Person;
 
-public class PersonBuilder implements IPersonBuilder{
+public class PersonBuilder implements IPersonBuilder {
 
     private static PersonBuilder _instance = null;
+
+    private PersonBuilder() {}
 
     public static IPersonBuilder GetInstance() {
         if(_instance == null)

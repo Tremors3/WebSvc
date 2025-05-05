@@ -28,8 +28,8 @@ public class MyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private IDb _myDb = null;
-	private IPersonBuilder _personBuilder = null;  // Person Builders
-       
+	private IPersonBuilder _personBuilder = null;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -99,7 +99,7 @@ public class MyServlet extends HttpServlet {
 		int age = Integer.parseInt(ageStr);
 
 		// Creating a Person model
-		Person person = new Person();
+		IPerson person = _personBuilder.getPerson();
 		person.set_id(id);
 		person.set_age(age);
 
