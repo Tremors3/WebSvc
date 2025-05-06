@@ -5,9 +5,6 @@ import org.json.JSONObject;
 import services.IPersonBuilder;
 import services.PersonBuilder;
 
-import java.util.Dictionary;
-import java.util.Hashtable;
-
 public class MapperPerson implements IMapperPerson {
 
     private IPersonBuilder _personBuilder = null;

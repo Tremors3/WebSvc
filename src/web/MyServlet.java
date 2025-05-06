@@ -1,8 +1,6 @@
 package web;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,10 +18,10 @@ import web.utils.WebUtils;
  */
 @WebServlet("/MyServlet")
 public class MyServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
-	private IManageBirth _imb = null;
-	private IMapToPerson _mtp = null;
+    private static final long serialVersionUID = 1L;
+    
+    private IManageBirth _imb = null;
+    private IMapToPerson _mtp = null;
 
     /**
      * Explicitly assign svcBuilder. This is used for testing.
@@ -33,46 +31,46 @@ public class MyServlet extends HttpServlet {
         super();
         
         this._imb = manageBirth;
-		this._mtp = mapToPerson;
+        this._mtp = mapToPerson;
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		int id = Integer.parseInt(request.getParameter("id"));
-		int age = Integer.parseInt(request.getParameter("age"));
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
+        int id = Integer.parseInt(request.getParameter("id"));
+        int age = Integer.parseInt(request.getParameter("age"));
 
-		try {
-			this._imb.updateBirth(_mtp.mapToPerson(id, age));
-		}
-		catch (Exception e) {
-			// Return Http code 400
-			response.setStatus(401); // This is wrong on purpose!
-		}
-	}
+        try {
+            this._imb.updateBirth(_mtp.mapToPerson(id, age));
+        }
+        catch (Exception e) {
+            // Return Http code 400
+            response.setStatus(401); // This is wrong on purpose!
+        }
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-      	JSONObject jsonObject = null;
-		try {
-			jsonObject = WebUtils.getHttpRequestBodyAsJson(request);
-		} catch (JSONException e) {
-			response.getWriter().append(e.getMessage() + "\n" + e.getStackTrace().toString());
-			return;
-		}
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = WebUtils.getHttpRequestBodyAsJson(request);
+        } catch (JSONException e) {
+            response.getWriter().append(e.getMessage() + "\n" + e.getStackTrace().toString());
+            return;
+        }
 
-		try {
-			this._imb.updateBirth(_mtp.mapToPerson(jsonObject));
-		}
-		catch (Exception e) {
-			// Return Http code 400
-			response.setStatus(401); // This is wrong on purpose!
-		}
-	}
+        try {
+            this._imb.updateBirth(_mtp.mapToPerson(jsonObject));
+        }
+        catch (Exception e) {
+            // Return Http code 400
+            response.setStatus(401); // This is wrong on purpose!
+        }
+    }
 
 }

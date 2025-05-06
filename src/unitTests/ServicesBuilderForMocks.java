@@ -7,14 +7,14 @@ import usecases.PersonService;
 
 public class ServicesBuilderForMocks implements ISvcBuilder {
 
-	@Override
-	public IDb createDb() {
-		return new MockThatThrowsException();
-	}
+    @Override
+    public IDb createDb() {
+        return new MockThatThrowsException();
+    }
 
-	@Override
-	public IPersonService createPersonService() {
-		return new PersonService(createDb());
-	}
+    @Override
+    public IPersonService createPersonService() {
+        return new PersonService(createDb());
+    }
 
 }

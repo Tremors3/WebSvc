@@ -3,5 +3,5 @@ package repositories;
 import models.IPerson;
 
 public interface IDb {
-	void updateBirth(IPerson person) throws Exception;
+    void updateBirth(IPerson person) throws Exception;
 }
