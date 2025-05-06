@@ -1,7 +1,5 @@
 package repositories;
 
-import models.IPerson;
-
 public interface IDb {
-	void updateBirth(IPerson person) throws Exception;
+	void updateBirth(int key, int age) throws Exception;
 }
