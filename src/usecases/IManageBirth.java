@@ -1,7 +1,7 @@
-package repositories;
+package usecases;
 
 import models.IPerson;
 
-public interface IDb {
+public interface IManageBirth {
     void updateBirth(IPerson person) throws Exception;
 }

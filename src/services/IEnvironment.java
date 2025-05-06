@@ -1,5 +1,5 @@
 package services;
 
 public interface IEnvironment {
-	Boolean IsLocal();
+    Boolean IsLocal();
 }

@@ -1,2 +1,2 @@
-# WebSvc
-Progetto universitario di Gestione del Progetto (2024-25) per sperimentare con CLEAN, SOLID e Design Pattern.
+# WebSvc - step/03-person-service
+Delegates some responsibilities of the MyServlet class to the PersonService business rules class and implements the MapperPerson class that handles the translation between the json-person web-view and the Person model.
