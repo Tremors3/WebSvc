@@ -8,17 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.IPerson;
-import models.Person;
-import org.json.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import repositories.IDb;
-import services.IPersonBuilder;
-import services.ISvcBuilder;
-import services.PersonBuilder;
-import services.ServiceBuilder;
+import usecases.IManageBirth;
+import web.utils.IMapToPerson;
 
 /**
  * Servlet implementation class MyServlet
@@ -27,26 +21,18 @@ import services.ServiceBuilder;
 public class MyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private IDb _myDb = null;
-	private IPersonBuilder _personBuilder = null;
+	private IManageBirth _imb = null;
+	private IMapToPerson _mtp = null;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MyServlet() {
-        this(ServiceBuilder.GetInstance(), PersonBuilder.GetInstance());
-    }
-    
     /**
      * Explicitly assign svcBuilder. This is used for testing.
      * We'll see how this is handled in Middleware...
-     * @param svcBuilder
      */
-    public MyServlet(ISvcBuilder svcBuilder, IPersonBuilder personBuilder) {
+    public MyServlet(IManageBirth manageBirth, IMapToPerson mapToPerson) {
         super();
         
-        this._myDb = svcBuilder.createDb();
-		this._personBuilder = personBuilder;
+        this._imb = manageBirth;
+		this._mtp = mapToPerson;
     }
 
 	/**
@@ -57,13 +43,8 @@ public class MyServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		int age = Integer.parseInt(request.getParameter("age"));
 
-		// Creating a Person model
-		IPerson person = _personBuilder.getPerson();
-		person.set_id(id);
-		person.set_age(age);
-
 		try {
-			this._myDb.updateBirth(person);
+			this._imb.updateBirth(_mtp.mapToPerson(id, age));
 		}
 		catch (Exception e) {
 			// Return Http code 400
@@ -98,13 +79,9 @@ public class MyServlet extends HttpServlet {
 		String ageStr = jsonObject.getString("age");
 		int age = Integer.parseInt(ageStr);
 
-		// Creating a Person model
-		IPerson person = _personBuilder.getPerson();
-		person.set_id(id);
-		person.set_age(age);
 
 		try {
-			this._myDb.updateBirth(person);
+			this._imb.updateBirth(_mtp.mapToPerson(id, age));
 		}
 		catch (Exception e) {
 			// Return Http code 400

@@ -3,9 +3,10 @@ package unitTests;
 import java.io.IOException;
 import javax.servlet.ServletException;
 
-import services.IPersonBuilder;
 import services.ISvcBuilder;
 import services.PersonBuilder;
+import usecases.PersonService;
+import web.utils.WebUtilsPerson;
 import web.MyServlet;
 
 public class MyServletTest {
@@ -19,13 +20,9 @@ public class MyServletTest {
 
 	private static void MyServlet_DbThrowsException_Return400() {
 		
-		// Arrange
-		
-		// Mock svcbuilder
-		ISvcBuilder svcBuilder = new ServicesBuilderForMocks();
 
-		// Person Builder
-		IPersonBuilder personBuilder = PersonBuilder.GetInstance();
+		// Arrange
+
 
 		// Mock up HttpServletRequest and HttpServletResponse
 		MyHttpServletRequest request = new MyHttpServletRequest();
@@ -33,13 +30,19 @@ public class MyServletTest {
 	    request.setParameter("age", "34");
 	    MyHttpServletResponse response = new MyHttpServletResponse();
 
+		// Mock svcbuilder
+		ISvcBuilder svcBuilder = new ServicesBuilderForMocks();
+
 	    // SUT stands for "Service Under Test"
-		MyServlet sut = new MyServlet(svcBuilder, personBuilder);
+		MyServlet sut = new MyServlet(
+				new PersonService(svcBuilder.createDb()),
+				new WebUtilsPerson(PersonBuilder.GetInstance())
+		);
 
 
-		
 		// Act
-		
+
+
 		Exception ex = null;
 		
 		try {
@@ -50,8 +53,10 @@ public class MyServletTest {
 			ex = e;
 		}
 		
+
 		// Assert
 		
+
 		Assert(null, ex);
 		Assert(400, response.getStatus());
 	}
