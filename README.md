@@ -1,2 +1,2 @@
-# WebSvc
-Progetto universitario di Gestione del Progetto (2024-25) per sperimentare con CLEAN, SOLID e Design Pattern.
+# WebSvc - step/02-person-model
+Creating the Person model and using it instead of the key-age pair.
