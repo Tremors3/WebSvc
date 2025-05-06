@@ -7,7 +7,7 @@ public class PersonBuilder implements IPersonBuilder {
 
     private static PersonBuilder _instance = null;
 
-    private PersonBuilder() {}
+    protected PersonBuilder() {}
 
     public static IPersonBuilder GetInstance() {
         if(_instance == null)

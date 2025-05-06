@@ -3,13 +3,15 @@ package services;
 import repositories.IDb;
 import repositories.InMemoryDb;
 import repositories.MongoDB;
+import usecases.IPersonService;
+import usecases.PersonService;
 
 public class ServiceBuilder implements ISvcBuilder {
 	
 	private static ServiceBuilder _instance = null;
 	private IEnvironment _env = null;
 	
-	private ServiceBuilder() {
+	protected ServiceBuilder() {
 		
 		// TODO we will see how this is handled by a MW...
 		this._env = new TheEnvironment();
@@ -27,6 +29,11 @@ public class ServiceBuilder implements ISvcBuilder {
 		if(_env.IsLocal())
 			return new InMemoryDb();
 		return new MongoDB();
+	}
+
+	@Override
+	public IPersonService createPersonService() {
+		return new PersonService(createDb());
 	}
 
 }

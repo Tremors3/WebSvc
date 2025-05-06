@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import usecases.IManageBirth;
 import web.utils.IMapToPerson;
+import web.utils.WebUtils;
 
 /**
  * Servlet implementation class MyServlet
@@ -38,7 +39,7 @@ public class MyServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		int age = Integer.parseInt(request.getParameter("age"));
@@ -55,33 +56,18 @@ public class MyServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int id = Integer.parseInt(request.getParameter("id"));
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		
-		StringBuilder requestBody = new StringBuilder();
-	      String line;
-	      try (BufferedReader reader = request.getReader()) {
-	         while ((line = reader.readLine()) != null) {
-	            requestBody.append(line).append("\n");
-	         }
-	      }
-	      
       	JSONObject jsonObject = null;
 		try {
-		    jsonObject = new JSONObject(requestBody.toString());
-		  } catch (JSONException e) {
+			jsonObject = WebUtils.getHttpRequestBodyAsJson(request);
+		} catch (JSONException e) {
 			response.getWriter().append(e.getMessage() + "\n" + e.getStackTrace().toString());
 			return;
-		  }
-
-		String ageStr = jsonObject.getString("age");
-		int age = Integer.parseInt(ageStr);
-
+		}
 
 		try {
-			this._imb.updateBirth(_mtp.mapToPerson(id, age));
+			this._imb.updateBirth(_mtp.mapToPerson(jsonObject));
 		}
 		catch (Exception e) {
 			// Return Http code 400

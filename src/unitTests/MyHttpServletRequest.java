@@ -2,6 +2,7 @@ package unitTests;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 import java.util.Collection;
@@ -26,13 +27,21 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpUpgradeHandler;
 import javax.servlet.http.Part;
 
+/**
+ * Support for UnitTests
+ */
 public class MyHttpServletRequest implements HttpServletRequest {
-	
+
 	private Dictionary<String, String> _params = new Hashtable<>();
-	
-	// This method is mine
+	private String _body = null;
+
+	// These methods are mine
 	public void setParameter(String key, String val) {
 		this._params.put(key, val);
+	}
+
+	public void setBody(String s) {
+		this._body = s;
 	}
 
 	@Override
@@ -150,8 +159,7 @@ public class MyHttpServletRequest implements HttpServletRequest {
 
 	@Override
 	public BufferedReader getReader() throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		return new BufferedReader(new StringReader(this._body));
 	}
 
 	@Override
@@ -229,19 +237,19 @@ public class MyHttpServletRequest implements HttpServletRequest {
 	@Override
 	public void removeAttribute(String name) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setAttribute(String name, Object o) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setCharacterEncoding(String env) throws UnsupportedEncodingException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -434,13 +442,13 @@ public class MyHttpServletRequest implements HttpServletRequest {
 	@Override
 	public void login(String username, String password) throws ServletException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void logout() throws ServletException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
