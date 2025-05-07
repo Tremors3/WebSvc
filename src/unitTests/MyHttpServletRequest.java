@@ -12,20 +12,13 @@ import java.util.Hashtable;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.AsyncContext;
-import javax.servlet.DispatcherType;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletInputStream;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpUpgradeHandler;
-import javax.servlet.http.Part;
+import jakarta.servlet.*;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpUpgradeHandler;
+import jakarta.servlet.http.Part;
 
 /**
  * Support for UnitTests
@@ -91,7 +84,25 @@ public class MyHttpServletRequest implements HttpServletRequest {
         // TODO Auto-generated method stub
         return null;
     }
-
+    
+    @Override
+    public String getRequestId() {
+        // TODO Auto-generated method stub
+        return "";
+    }
+    
+    @Override
+    public String getProtocolRequestId() {
+        // TODO Auto-generated method stub
+        return "";
+    }
+    
+    @Override
+    public ServletConnection getServletConnection() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    
     @Override
     public ServletInputStream getInputStream() throws IOException {
         // TODO Auto-generated method stub
@@ -160,12 +171,6 @@ public class MyHttpServletRequest implements HttpServletRequest {
     @Override
     public BufferedReader getReader() throws IOException {
         return new BufferedReader(new StringReader(this._body));
-    }
-
-    @Override
-    public String getRealPath(String path) {
-        // TODO Auto-generated method stub
-        return null;
     }
 
     @Override
@@ -417,12 +422,6 @@ public class MyHttpServletRequest implements HttpServletRequest {
 
     @Override
     public boolean isRequestedSessionIdFromURL() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean isRequestedSessionIdFromUrl() {
         // TODO Auto-generated method stub
         return false;
     }
