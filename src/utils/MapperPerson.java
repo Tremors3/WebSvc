@@ -1,18 +1,15 @@
-package web.utils;
+package utils;
 
+import com.google.inject.Inject;
 import models.IPerson;
 import org.json.JSONObject;
-import services.IPersonBuilder;
-import services.PersonBuilder;
+import modelBuilders.IPersonBuilder;
 
 public class MapperPerson implements IMapperPerson {
 
     private IPersonBuilder _personBuilder = null;
 
-    public MapperPerson() {
-        this._personBuilder = PersonBuilder.GetInstance();
-    }
-
+    @Inject
     public MapperPerson(IPersonBuilder personBuilder) {
         this._personBuilder = personBuilder;
     }

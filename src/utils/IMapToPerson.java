@@ -1,4 +1,4 @@
-package web.utils;
+package utils;
 
 import models.IPerson;
 import org.json.JSONObject;
