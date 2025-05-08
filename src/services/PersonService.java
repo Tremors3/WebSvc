@@ -1,5 +1,6 @@
-package usecases;
+package services;
 
+import com.google.inject.Inject;
 import models.IPerson;
 import repositories.IDb;
 
@@ -7,6 +8,7 @@ public class PersonService implements IPersonService {
 
     private IDb _myDb = null;
 
+    @Inject
     public PersonService(IDb db) {
         this._myDb = db;
     }

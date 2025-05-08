@@ -5,9 +5,9 @@ import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.Locale;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class MyHttpServletResponse implements HttpServletResponse {
     
@@ -146,19 +146,7 @@ public class MyHttpServletResponse implements HttpServletResponse {
     }
 
     @Override
-    public String encodeRedirectUrl(String url) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
     public String encodeURL(String url) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public String encodeUrl(String url) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -203,7 +191,12 @@ public class MyHttpServletResponse implements HttpServletResponse {
         // TODO Auto-generated method stub
         
     }
-
+    
+    @Override
+    public void sendRedirect(String s, int i, boolean b) throws IOException {
+        // TODO Auto-generated method stub
+    }
+    
     @Override
     public void setDateHeader(String name, long date) {
         // TODO Auto-generated method stub
@@ -225,12 +218,6 @@ public class MyHttpServletResponse implements HttpServletResponse {
     @Override
     public void setStatus(int sc) {
         this._status = sc;
-        
-    }
-
-    @Override
-    public void setStatus(int sc, String sm) {
-        // TODO Auto-generated method stub
         
     }
 

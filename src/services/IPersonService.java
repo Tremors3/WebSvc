@@ -1,4 +1,4 @@
-package usecases;
+package services;
 
 public interface IPersonService extends IManageBirth {
 }

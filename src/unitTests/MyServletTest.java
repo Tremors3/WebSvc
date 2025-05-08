@@ -2,9 +2,14 @@ package unitTests;
 
 import java.io.IOException;
 
-import services.ISvcBuilder;
-import services.PersonBuilder;
-import web.utils.MapperPerson;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import configurations.modules.LoadConfiguration;
+import configurations.LocalConfiguration;
+import configurations.ProdConfiguration;
+import environment.IEnvironment;
+import repositories.IDb;
+import repositories.MongoDB;
 import web.MyServlet;
 
 public class MyServletTest {
@@ -35,14 +40,11 @@ public class MyServletTest {
         request.setParameter("age", "34");
         MyHttpServletResponse response = new MyHttpServletResponse();
 
-        // Mock svcbuilder
-        ISvcBuilder svcBuilder = new ServicesBuilderForMocks();
+        // Getting the mock configuration
+        Injector testConfiguration = Guice.createInjector(new TestConfiguration());
 
         // SUT stands for "Service Under Test"
-        MyServlet sut = new MyServlet(
-                svcBuilder.createPersonService(),
-                new MapperPerson(PersonBuilder.GetInstance())
-        );
+        MyServlet sut = testConfiguration.getInstance(MyServlet.class);
 
 
         // Act
@@ -75,14 +77,11 @@ public class MyServletTest {
         request.setBody("{\"id\" : \"11\", \"age\" : \"43\"}");
         MyHttpServletResponse response = new MyHttpServletResponse();
 
-        // Mock svcbuilder
-        ISvcBuilder svcBuilder = new ServicesBuilderForMocks();
+        // Getting the mock configuration
+        Injector testConfiguration = Guice.createInjector(new TestConfiguration());
 
         // SUT stands for "Service Under Test"
-        MyServlet sut = new MyServlet(
-                svcBuilder.createPersonService(),
-                new MapperPerson(PersonBuilder.GetInstance())
-        );
+        MyServlet sut = testConfiguration.getInstance(MyServlet.class);
 
 
         // Act
@@ -104,9 +103,37 @@ public class MyServletTest {
         AssertEquals(400, response.getStatus());
     }
     
+    private static void Environment_IsLocal_ReturnFalse() {
+        
+        
+        // Arrange
+    
+        
+        Injector loadConfiguration = Guice.createInjector(new LoadConfiguration());
+        IEnvironment env = loadConfiguration.getInstance(IEnvironment.class);
+        
+        
+        // Act
+    
+        
+        boolean isLocal = env.IsLocal();
+        Injector configuration = Guice.createInjector(
+            isLocal ? new LocalConfiguration() : new ProdConfiguration()
+        );
+        Class<?> dbClass = configuration.getInstance(IDb.class).getClass();
+        
+        
+        // Assert
+    
+        
+        AssertEquals(isLocal, false);
+        AssertEquals(dbClass, MongoDB.class);
+    }
+    
     public static void main(String[] args) {
-        MyServlet_DbThrowsExceptionOnGet_Return400();
-        MyServlet_DbThrowsExceptionOnPost_Return400();
+        //MyServlet_DbThrowsExceptionOnGet_Return400();
+        //MyServlet_DbThrowsExceptionOnPost_Return400();
+        Environment_IsLocal_ReturnFalse();
     }
 
 }

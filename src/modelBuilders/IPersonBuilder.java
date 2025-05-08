@@ -1,4 +1,4 @@
-package services;
+package modelBuilders;
 
 import models.IPerson;
 

@@ -1,4 +1,4 @@
-package services;
+package environment;
 
 public interface IEnvironment {
     Boolean IsLocal();

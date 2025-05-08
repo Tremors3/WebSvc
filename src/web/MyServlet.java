@@ -1,17 +1,18 @@
 package web;
 
 import java.io.IOException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
+import com.google.inject.Inject;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import usecases.IManageBirth;
-import web.utils.IMapToPerson;
-import web.utils.WebUtils;
+import services.IManageBirth;
+import utils.IMapToPerson;
 
 /**
  * Servlet implementation class MyServlet
@@ -27,6 +28,7 @@ public class MyServlet extends HttpServlet {
      * Explicitly assign svcBuilder. This is used for testing.
      * We'll see how this is handled in Middleware...
      */
+    @Inject
     public MyServlet(IManageBirth manageBirth, IMapToPerson mapToPerson) {
         super();
         
