@@ -1,5 +1,12 @@
 package unitTests;
 
+import jakarta.servlet.*;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpUpgradeHandler;
+import jakarta.servlet.http.Part;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
@@ -12,16 +19,8 @@ import java.util.Hashtable;
 import java.util.Locale;
 import java.util.Map;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import jakarta.servlet.http.HttpUpgradeHandler;
-import jakarta.servlet.http.Part;
-
 /**
- * Support for UnitTests
+ * Support for UnitTests.
  */
 public class MyHttpServletRequest implements HttpServletRequest {
 
@@ -84,25 +83,25 @@ public class MyHttpServletRequest implements HttpServletRequest {
         // TODO Auto-generated method stub
         return null;
     }
-    
+
     @Override
     public String getRequestId() {
         // TODO Auto-generated method stub
         return "";
     }
-    
+
     @Override
     public String getProtocolRequestId() {
         // TODO Auto-generated method stub
         return "";
     }
-    
+
     @Override
     public ServletConnection getServletConnection() {
         // TODO Auto-generated method stub
         return null;
     }
-    
+
     @Override
     public ServletInputStream getInputStream() throws IOException {
         // TODO Auto-generated method stub
@@ -252,7 +251,8 @@ public class MyHttpServletRequest implements HttpServletRequest {
     }
 
     @Override
-    public void setCharacterEncoding(String env) throws UnsupportedEncodingException {
+    public void setCharacterEncoding(String env)
+        throws UnsupportedEncodingException {
         // TODO Auto-generated method stub
 
     }
@@ -264,14 +264,17 @@ public class MyHttpServletRequest implements HttpServletRequest {
     }
 
     @Override
-    public AsyncContext startAsync(ServletRequest servletRequest, ServletResponse servletResponse)
-            throws IllegalStateException {
+    public AsyncContext startAsync(
+        ServletRequest servletRequest,
+        ServletResponse servletResponse
+    ) throws IllegalStateException {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public boolean authenticate(HttpServletResponse response) throws IOException, ServletException {
+    public boolean authenticate(HttpServletResponse response)
+        throws IOException, ServletException {
         // TODO Auto-generated method stub
         return false;
     }
@@ -439,7 +442,8 @@ public class MyHttpServletRequest implements HttpServletRequest {
     }
 
     @Override
-    public void login(String username, String password) throws ServletException {
+    public void login(String username, String password)
+        throws ServletException {
         // TODO Auto-generated method stub
 
     }
@@ -451,9 +455,9 @@ public class MyHttpServletRequest implements HttpServletRequest {
     }
 
     @Override
-    public <T extends HttpUpgradeHandler> T upgrade(Class<T> handlerClass) throws IOException, ServletException {
+    public <T extends HttpUpgradeHandler> T upgrade(Class<T> handlerClass)
+        throws IOException, ServletException {
         // TODO Auto-generated method stub
         return null;
     }
-
 }

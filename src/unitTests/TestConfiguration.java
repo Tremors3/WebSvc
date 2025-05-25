@@ -5,15 +5,17 @@ import configurations.modules.CommonConfiguration;
 import configurations.modules.LoadConfiguration;
 import repositories.IDb;
 
+/**
+ * Configuration for Testing.
+ */
 public class TestConfiguration extends AbstractModule {
-    
+
     @Override
     public void configure() {
         install(new LoadConfiguration());
         install(new CommonConfiguration());
-        
+
         // Configuring Mock Database
         bind(IDb.class).to(MockThatThrowsException.class);
     }
-    
 }

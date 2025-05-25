@@ -1,4 +1,6 @@
 package services;
 
-public interface IPersonService extends IManageBirth {
-}
+/**
+ * PersonService interface.
+ */
+public interface IPersonService extends IManageBirth {}

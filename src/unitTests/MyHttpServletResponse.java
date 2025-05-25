@@ -1,22 +1,24 @@
 package unitTests;
 
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.Locale;
 
-import jakarta.servlet.ServletOutputStream;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletResponse;
-
+/**
+ * Support for UnitTests.
+ */
 public class MyHttpServletResponse implements HttpServletResponse {
-    
+
     private int _status;
 
     @Override
     public void flushBuffer() throws IOException {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
@@ -64,73 +66,73 @@ public class MyHttpServletResponse implements HttpServletResponse {
     @Override
     public void reset() {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void resetBuffer() {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void setBufferSize(int arg0) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void setCharacterEncoding(String charset) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void setContentLength(int len) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void setContentLengthLong(long len) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void setContentType(String type) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void setLocale(Locale loc) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void addCookie(Cookie cookie) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void addDateHeader(String name, long date) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void addHeader(String name, String value) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void addIntHeader(String name, int value) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
@@ -177,48 +179,46 @@ public class MyHttpServletResponse implements HttpServletResponse {
     @Override
     public void sendError(int sc) throws IOException {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void sendError(int sc, String msg) throws IOException {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void sendRedirect(String location) throws IOException {
         // TODO Auto-generated method stub
-        
+
     }
-    
+
     @Override
     public void sendRedirect(String s, int i, boolean b) throws IOException {
         // TODO Auto-generated method stub
     }
-    
+
     @Override
     public void setDateHeader(String name, long date) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void setHeader(String name, String value) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void setIntHeader(String name, int value) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void setStatus(int sc) {
         this._status = sc;
-        
     }
-
 }
