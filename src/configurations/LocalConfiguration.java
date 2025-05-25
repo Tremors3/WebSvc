@@ -6,6 +6,9 @@ import configurations.modules.LoadConfiguration;
 import repositories.IDb;
 import repositories.InMemoryDb;
 
+/**
+ * Configuration for Development.
+ */
 public class LocalConfiguration extends AbstractModule {
 
     @Override

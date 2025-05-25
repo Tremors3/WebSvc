@@ -4,6 +4,9 @@ import com.google.inject.Inject;
 import models.IPerson;
 import repositories.IDb;
 
+/**
+ * Person service class, containing Person related buisness-logic.
+ */
 public class PersonService implements IPersonService {
 
     @Inject

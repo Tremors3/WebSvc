@@ -3,6 +3,9 @@ package unitTests;
 import models.IPerson;
 import repositories.IDb;
 
+/**
+ * Database mock for testing, that always throw an exception.
+ */
 public class MockThatThrowsException implements IDb {
 
     @Override

@@ -3,6 +3,10 @@ package environment;
 import com.google.inject.Singleton;
 import io.github.cdimascio.dotenv.Dotenv;
 
+/**
+ * IEnvironmentReader implementation, that uses dotenv-java module.
+ * @see <a href="https://github.com/cdimascio/dotenv-java">dotenv-java</a>
+ */
 @Singleton
 public class DotenvEnvironmentReader implements IEnvironmentReader {
 

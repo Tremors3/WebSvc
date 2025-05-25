@@ -4,6 +4,9 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.Objects;
 
+/**
+ * IEnvironment implementation.
+ */
 @Singleton
 public class TheEnvironment implements IEnvironment {
 

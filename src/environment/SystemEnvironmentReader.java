@@ -2,6 +2,9 @@ package environment;
 
 import com.google.inject.Singleton;
 
+/**
+ * IEnvironmentReader implementation, that uses System class.
+ */
 @Singleton
 public class SystemEnvironmentReader implements IEnvironmentReader {
 

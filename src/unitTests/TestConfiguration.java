@@ -5,6 +5,9 @@ import configurations.modules.CommonConfiguration;
 import configurations.modules.LoadConfiguration;
 import repositories.IDb;
 
+/**
+ * Configuration for Testing.
+ */
 public class TestConfiguration extends AbstractModule {
 
     @Override

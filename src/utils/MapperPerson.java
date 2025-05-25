@@ -5,6 +5,10 @@ import modelBuilders.IPersonBuilder;
 import models.IPerson;
 import org.json.JSONObject;
 
+/**
+ * Mapper class for translating Web layer Person to Model layer Person
+ * and vice versa.
+ */
 public class MapperPerson implements IMapperPerson {
 
     @Inject

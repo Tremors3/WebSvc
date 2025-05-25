@@ -8,6 +8,9 @@ import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.Locale;
 
+/**
+ * Support for UnitTests.
+ */
 public class MyHttpServletResponse implements HttpServletResponse {
 
     private int _status;

@@ -4,6 +4,9 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
 import environment.*;
 
+/**
+ * Configuration for loading environments.
+ */
 public class LoadConfiguration extends AbstractModule {
 
     @Override

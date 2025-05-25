@@ -12,7 +12,7 @@ import services.IManageBirth;
 import utils.IMapToPerson;
 
 /**
- * Servlet implementation class MyServlet
+ * Servlet implementation class MyServlet.
  */
 @WebServlet("/MyServlet")
 public class MyServlet extends HttpServlet {

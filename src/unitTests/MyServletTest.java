@@ -11,6 +11,9 @@ import repositories.IDb;
 import repositories.MongoDB;
 import web.MyServlet;
 
+/**
+ * Unit test for testing MyServlet module.
+ */
 public class MyServletTest {
 
     private static <T> void AssertEquals(T expected, T actual) {

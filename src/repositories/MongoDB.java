@@ -2,6 +2,9 @@ package repositories;
 
 import models.IPerson;
 
+/**
+ * MongoDB IDb implementation, for production use.
+ */
 public class MongoDB implements IDb {
 
     @Override

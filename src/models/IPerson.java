@@ -1,5 +1,8 @@
 package models;
 
+/**
+ * Person interface.
+ */
 public interface IPerson {
     int get_age();
 

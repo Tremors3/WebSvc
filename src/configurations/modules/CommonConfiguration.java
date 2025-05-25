@@ -10,6 +10,9 @@ import utils.IMapToPerson;
 import utils.MapperPerson;
 import web.MyServlet;
 
+/**
+ * Common to include for others configurations.
+ */
 public class CommonConfiguration extends AbstractModule {
 
     @Override

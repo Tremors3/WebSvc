@@ -4,6 +4,9 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 import models.IPerson;
 
+/**
+ * In-memory IDb implementation, for fast developement use.
+ */
 public class InMemoryDb implements IDb {
 
     private Dictionary<Integer, Integer> _db = new Hashtable<>();

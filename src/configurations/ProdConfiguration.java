@@ -6,6 +6,9 @@ import configurations.modules.LoadConfiguration;
 import repositories.IDb;
 import repositories.MongoDB;
 
+/**
+ * Configuration for Production.
+ */
 public class ProdConfiguration extends AbstractModule {
 
     @Override

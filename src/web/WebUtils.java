@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.json.JSONObject;
 
 /**
- * Useful stuff for parsing Web requests/datatypes
+ * Useful stuff for parsing Web requests/datatypes.
  */
 public abstract class WebUtils {
 

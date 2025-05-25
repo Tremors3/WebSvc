@@ -20,7 +20,7 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * Support for UnitTests
+ * Support for UnitTests.
  */
 public class MyHttpServletRequest implements HttpServletRequest {
 
