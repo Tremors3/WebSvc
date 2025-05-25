@@ -19,11 +19,7 @@ public class MyServletTest {
     private static <T> void AssertEquals(T expected, T actual) {
         if (expected != actual) {
             System.out.println(
-                "Assertion failed! Expected \'" +
-                expected +
-                "\', got \'" +
-                actual +
-                "\' instead."
+                "Assertion failed! Expected \'" + expected + "\', got \'" + actual + "\' instead."
             );
             System.exit(-1);
         }
@@ -115,7 +111,7 @@ public class MyServletTest {
         Injector configuration = Guice.createInjector(
             isLocal ? new LocalConfiguration() : new ProdConfiguration()
         );
-        Class<?> dbClass = configuration.getInstance(IDb.class).getClass();
+        Class<? extends IDb> dbClass = configuration.getInstance(IDb.class).getClass();
 
         // Assert
 
