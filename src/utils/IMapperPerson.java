@@ -1,4 +1,3 @@
 package utils;
 
-public interface IMapperPerson extends IMapToJson, IMapToPerson {
-}
+public interface IMapperPerson extends IMapToJson, IMapToPerson {}

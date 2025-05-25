@@ -1,10 +1,8 @@
 package web;
 
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
-
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.json.JSONObject;
 
 /**
@@ -12,7 +10,9 @@ import org.json.JSONObject;
  */
 public abstract class WebUtils {
 
-    public static JSONObject getHttpRequestBodyAsJson(HttpServletRequest request) throws IOException {
+    public static JSONObject getHttpRequestBodyAsJson(
+        HttpServletRequest request
+    ) throws IOException {
         StringBuilder requestBody = new StringBuilder();
         String line;
         try (BufferedReader reader = request.getReader()) {

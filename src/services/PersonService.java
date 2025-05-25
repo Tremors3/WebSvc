@@ -6,12 +6,8 @@ import repositories.IDb;
 
 public class PersonService implements IPersonService {
 
-    private IDb _myDb = null;
-
     @Inject
-    public PersonService(IDb db) {
-        this._myDb = db;
-    }
+    private IDb _myDb;
 
     @Override
     public void updateBirth(IPerson person) throws Exception {

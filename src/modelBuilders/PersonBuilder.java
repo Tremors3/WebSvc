@@ -8,10 +8,9 @@ import models.Person;
 public class PersonBuilder implements IPersonBuilder {
 
     protected PersonBuilder() {}
-    
+
     @Override
     public IPerson getPerson() {
         return new Person();
     }
-    
 }

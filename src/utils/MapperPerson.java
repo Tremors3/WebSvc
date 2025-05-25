@@ -1,19 +1,15 @@
 package utils;
 
 import com.google.inject.Inject;
+import modelBuilders.IPersonBuilder;
 import models.IPerson;
 import org.json.JSONObject;
-import modelBuilders.IPersonBuilder;
 
 public class MapperPerson implements IMapperPerson {
 
-    private IPersonBuilder _personBuilder = null;
-
     @Inject
-    public MapperPerson(IPersonBuilder personBuilder) {
-        this._personBuilder = personBuilder;
-    }
-    
+    private IPersonBuilder _personBuilder;
+
     @Override
     public IPerson mapToPerson(JSONObject jsonObject) {
         IPerson person = this._personBuilder.getPerson();
