@@ -7,6 +7,16 @@ import configurations.ProdConfiguration;
 import configurations.modules.LoadConfiguration;
 import environment.IEnvironment;
 import java.io.IOException;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Tag;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import repositories.IDb;
 import repositories.MongoDB;
 import web.MyServlet;
@@ -14,25 +24,21 @@ import web.MyServlet;
 /**
  * Unit test for testing MyServlet module.
  */
-public class MyServletTest {
+public class MyServletTests {
 
-    private static <T> void AssertEquals(T expected, T actual) {
-        if (expected != actual) {
-            System.out.println(
-                "Assertion failed! Expected \'" + expected + "\', got \'" + actual + "\' instead."
-            );
-            System.exit(-1);
-        }
+    static Injector loadConfiguration;
+
+    @BeforeAll
+    public static void Setup() {
+        MyServletTests.loadConfiguration = Guice.createInjector(
+                new LoadConfiguration()
+        );
     }
 
-    private static void AssertNull(Object o) {
-        if (o != null) {
-            System.out.println("Assertion failed! object is not null.");
-            System.exit(-1);
-        }
-    }
+    @Test
+    @DisplayName("MyServlet DbThrowsExceptionOnGet Return400")
+    public void MyServlet_DbThrowsExceptionOnGet_Return400() {
 
-    private static void MyServlet_DbThrowsExceptionOnGet_Return400() {
         // Arrange
 
         // Mock up HttpServletRequest and HttpServletResponse
@@ -61,11 +67,14 @@ public class MyServletTest {
 
         // Assert
 
-        AssertNull(ioException); // Check we dit not capture a wrong type of Exception
-        AssertEquals(400, response.getStatus());
+        assertNull(ioException); // Check we dit not capture a wrong type of Exception
+        assertEquals(400, response.getStatus());
     }
 
-    private static void MyServlet_DbThrowsExceptionOnPost_Return400() {
+    @Test
+    @DisplayName("MyServlet DbThrowsExceptionOnPost Return400")
+    public void MyServlet_DbThrowsExceptionOnPost_Return400() {
+
         // Arrange
 
         // Mock up HttpServletRequest and HttpServletResponse
@@ -93,17 +102,19 @@ public class MyServletTest {
 
         // Assert
 
-        AssertNull(ioException); // Check we dit not capture a wrong type of Exception
-        AssertEquals(400, response.getStatus());
+        assertNull(ioException); // Check we dit not capture a wrong type of Exception
+        assertEquals(400, response.getStatus());
     }
 
-    private static void Environment_IsLocal_ReturnFalse() {
+    @Test
+    @DisplayName("Environment IsLocal ReturnFalse")
+    public void Environment_IsLocal_ReturnFalse() {
+
         // Arrange
 
-        Injector loadConfiguration = Guice.createInjector(
-            new LoadConfiguration()
+        IEnvironment env = MyServletTests.loadConfiguration.getInstance(
+                IEnvironment.class
         );
-        IEnvironment env = loadConfiguration.getInstance(IEnvironment.class);
 
         // Act
 
@@ -111,17 +122,14 @@ public class MyServletTest {
         Injector configuration = Guice.createInjector(
             isLocal ? new LocalConfiguration() : new ProdConfiguration()
         );
-        Class<? extends IDb> dbClass = configuration.getInstance(IDb.class).getClass();
+        Class<? extends IDb> dbClass = configuration.getInstance(
+                IDb.class
+        ).getClass();
 
         // Assert
 
-        //AssertEquals(false, isLocal);
-        AssertEquals(MongoDB.class, dbClass);
+        assertFalse(isLocal);
+        assertEquals(MongoDB.class, dbClass);
     }
 
-    public static void main(String[] args) {
-        //MyServlet_DbThrowsExceptionOnGet_Return400();
-        //MyServlet_DbThrowsExceptionOnPost_Return400();
-        Environment_IsLocal_ReturnFalse();
-    }
 }
