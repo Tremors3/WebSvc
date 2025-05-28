@@ -112,7 +112,9 @@ public class MyServletTests {
 
         // Arrange
 
-        IEnvironment env = MyServletTests.loadConfiguration.getInstance(IEnvironment.class);
+        IEnvironment env = MyServletTests.loadConfiguration.getInstance(
+                IEnvironment.class
+        );
 
         // Act
 
@@ -120,7 +122,9 @@ public class MyServletTests {
         Injector configuration = Guice.createInjector(
             isLocal ? new LocalConfiguration() : new ProdConfiguration()
         );
-        Class<? extends IDb> dbClass = configuration.getInstance(IDb.class).getClass();
+        Class<? extends IDb> dbClass = configuration.getInstance(
+                IDb.class
+        ).getClass();
 
         // Assert
 

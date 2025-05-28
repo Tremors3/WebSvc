@@ -15,6 +15,7 @@ public class TheEnvironment implements IEnvironment {
 
     @Override
     public Boolean IsLocal() {
-        return Objects.equals(_envReader.get("LOCAL", "true"), "true");
+        return Objects.equals(
+                _envReader.get("LOCAL", "true"), "true");
     }
 }
